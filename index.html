@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #age {
+            font-size: 24px;
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Your Age:</h1>
+    <p id="age">Loading...</p>
+
+    <script>
+        fetch("https://server-iota-two-78.vercel.app/age")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("age").textContent = data.age+1;
+            })
+            .catch(error => {
+                document.getElementById("age").textContent = "Error fetching age";
+                console.error("Error:", error);
+            });
+    </script>
+
+</body>
+</html>
